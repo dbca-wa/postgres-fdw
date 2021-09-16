@@ -1,10 +1,10 @@
-# Dockerfile to build BFRS application images.
 # Prepare the base environment.
-FROM postgres:12.2 as builder_base
+FROM postgres:13.4 as builder_base
 MAINTAINER asi@dbca.wa.gov.au
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update -y \
-  && apt-get install --no-install-recommends -y vim alien libpq-dev postgresql-server-dev-12 libaio1 libaio-dev
+RUN apt-get update \
+  && apt-get upgrade -y \
+  && apt-get install --no-install-recommends -y alien libpq-dev postgresql-server-dev-13 libaio1 libaio-dev
 
 FROM builder_base
 WORKDIR /oracle
@@ -26,5 +26,3 @@ WORKDIR /root
 RUN rm -rf /oracle
 
 ENV TZ=Australia/Perth
-
-
