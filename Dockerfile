@@ -1,5 +1,5 @@
 # Prepare the base environment.
-FROM postgres:13.4 as builder_base
+FROM postgis/postgis:13-3.1 as builder_base
 MAINTAINER asi@dbca.wa.gov.au
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
